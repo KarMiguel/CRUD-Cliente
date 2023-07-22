@@ -12,7 +12,7 @@
 		
 		if($resultado)
 		{
-            echo '<script>alert("Cliente cadastrado com sucesso!");</script>';
+            echo '<script>alert("Cliente removido com sucesso!");</script>';
 		}
 		else
 		{
@@ -56,7 +56,7 @@
     if (window.confirm("Deseja apagar este cliente?")) {
         window.location.href = "remover.php?id=<?php echo $id; ?>&opcao=sim";
     } else {
-      window.location.href = "cadastrado.php";
+      window.location.href = "listar.php";
     }
   }
   </script>
