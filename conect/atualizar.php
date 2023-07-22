@@ -123,8 +123,9 @@
         $sql = "UPDATE pessoa SET nome = '{$nome}', data_nascimento = '{$dtNasc}', telefone = '{$telefone}',
          genero = '{$genero}', email = '{$email}', profissao = '{$profissao}' WHERE id = {$id}";		
 
+	$resultado = mysqli_query($conexao, $sql);
 
-		if ($resultado) {
+	if ($resultado) {
             echo '<script>alert("Cadastro atualizado com sucesso!");</script>';
             echo '<script>window.location.href = "listar.php";</script>';
         } else {
