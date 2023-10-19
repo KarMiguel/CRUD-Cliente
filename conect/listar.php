@@ -1,3 +1,25 @@
+
+<?php
+if (isset($_GET['opcao'])) {
+    $id = $_GET['id'];
+    
+    include('../config/conexao.php');
+
+    $sql = "DELETE FROM pessoa WHERE id = {$id}";
+
+    $resultado = mysqli_query($conexao, $sql);
+
+    if ($resultado) {
+        echo "Excluído com sucesso!";
+    } else {
+        $msg = mysqli_error($conexao);
+        echo "Erro ao excluir: $msg";
+    }
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,13 +27,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de  Cliente</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet"  type="text/css" href="../css/style.css">
     <link
         rel="shortcut icon"
         href="../img/logo-menu.png"
         type="image/vnd.microsoft.icon"
   />
-  <script src="js/form.js" defer></script>
 </head>
 <body>
     <nav class="nav-bar">
@@ -36,6 +57,7 @@
     $resultado = mysqli_query($conexao, $sql);
     
     if ($resultado->num_rows) {
+        echo "<div class='table-container'>";
         echo "<table>";
         echo "<tr>";
         echo "<th>ID</th>";
@@ -45,27 +67,29 @@
         echo "<th>Atualizar</th>";
         echo "<th>Remover</th>";
         echo "</tr>";
-        
+    
         while ($values = mysqli_fetch_assoc($resultado)) {
-            $id = $values['id'];            
+            $id = $values['id'];
             echo "<tr>";
             echo "<td>" . $values['id'] . "</td>";
             echo "<td>" . $values['nome'] . "</td>";
             echo "<td>" . $values['email'] . "</td>";
             echo "<td><a class='dados' href='Visualizar.php?id={$id}'>Visualizar</a></td>";
             echo "<td><a class='atualizar' href='atualizar.php?id={$id}'>Atualizar</a></td>";
-            echo "<td><a class='remove' href='remover.php?id={$id}'>Remover</a></td>";
+            echo '<td><a class="remove" href="javascript:void(0)" onclick="confirmarApagar(' . $id . ')">Remover</a></td>';
+            
             echo "</tr>";
         }
-        
+    
         echo "</table>";
+        echo "</div>";
     } else {
-        echo "<script>alert('Não há nenhum aluno registrado!');</script>";
+        echo "Não há nenhum aluno registrado!";
     }
 ?>
 
-        
-        
+
+        <script src="../js/form.js"></script>
   </header>
     <footer class="tfooter">
         <div class="rodape"> 

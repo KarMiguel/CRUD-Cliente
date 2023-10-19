@@ -37,40 +37,41 @@
       <h1>VISUALIZAR DADOS CLIENTE</h1>
     </div>
     <div class="visualizar">
-      <?php if ($editar) : ?>
-        <div class="visualizar-item">
-          <strong>Nome:</strong>
-          <?php echo $editar['nome']; ?>
-        </div>
-
-        <div class="visualizar-item">
-          <strong>Data de Nascimento:</strong>
-          <?php echo $editar['data_nascimento']; ?>
-        </div>
-
-        <div class="visualizar-item">
-          <strong>Telefone:</strong>
-          <?php echo $editar['telefone']; ?>
-        </div>
-
-        <div class="visualizar-item">
-          <strong>Gênero:</strong>
-          <?php echo $editar['genero']; ?>
-        </div>
-
-        <div class="visualizar-item">
-          <strong>E-mail:</strong>
-          <?php echo $editar['email']; ?>
-        </div>
-
-        <div class="visualizar-item">
-          <strong>Profissão:</strong>
-          <?php echo $editar['profissao']; ?>
-        </div>
-      <?php else : ?>
-        <p>Nenhum dado encontrado.</p>
-      <?php endif; ?>
+  <?php if ($editar) : ?>
+    <div class="visualizar-item">
+      <h3><strong>Nome:</strong></h3>
+      <p><?php echo $editar['nome']; ?></p>
     </div>
+
+    <div class="visualizar-item">
+      <h3><strong>Data de Nascimento:</strong></h3>
+      <p><?php echo $editar['data_nascimento']; ?></p>
+    </div>
+
+    <div class="visualizar-item">
+      <h3><strong>Telefone:</strong></h3>
+      <p><?php echo $editar['telefone']; ?></p>
+    </div>
+
+    <div class="visualizar-item">
+      <h3><strong>Gênero:</strong></h3>
+      <p><?php echo $editar['genero']; ?></p>
+    </div>
+
+    <div class="visualizar-item">
+      <h3><strong>E-mail:</strong></h3>
+      <p><?php echo $editar['email']; ?></p>
+    </div>
+
+    <div class="visualizar-item">
+      <h3><strong>Profissão:</strong></h3>
+      <p><?php echo $editar['profissao']; ?></p>
+    </div>
+  <?php else : ?>
+    <p>Nenhum dado encontrado.</p>
+  <?php endif; ?>
+</div>
+
   </header>
 
   <footer class="tfooter">

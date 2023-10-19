@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/style.css">
-  <title>Visualizar Dados Clientes</title>
+  <title>Pesquisar Clientes</title>
   <link rel="shortcut icon" href="../img/logo-menu.png" type="image/vnd.microsoft.icon">
 </head>
 <body>
@@ -44,6 +44,7 @@
 
         if ($resultado && mysqli_num_rows($resultado) > 0) {
             if ($resultado->num_rows) {
+                echo "<div class='table-container'>"; 
                 echo "<table>";
                 echo "<tr>";
                 echo "<th>ID</th>";
@@ -66,10 +67,11 @@
                     echo "</tr>";
                 }
                 echo "</table>";
-            }
+                echo "</div>";
+             }
                 
         } else {
-            echo '<script>alert("Cliente nao encontrado!");</script>';
+            echo " Cliente nao encontrado!";
         }
     }
     ?>

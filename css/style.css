@@ -31,7 +31,7 @@ body {
 
 .menu > li {
   margin-left: 15px;
-  margin-right: 15px;
+  margin-right: 30px;
 }
 
 .menu > li > a {
@@ -48,7 +48,7 @@ body {
 
 .logo > img {
   width: 131px;
-  margin-left: 5rem;
+  margin-left: 5.2rem;
 }
 
 .tfooter {
@@ -58,6 +58,7 @@ body {
   color: white;
   line-height: 16px;
   width: 100%;
+  margin-top: 1.5rem;
 }
 
 .rodape {
@@ -77,19 +78,18 @@ body {
   color: #6ac9cf;
 }
 
-.container {
+header.container {
   display: flex;
   margin-left: 7rem;
-  margin-right: 8rem;
+  margin-right: 7rem;
   height: 100vh;
-  flex-direction: column;
-  min-height: 100%;
+  flex-direction: column; 
+  
 }
 
 .title > h1 {
   color: #0c2324;
   margin-bottom: 11px;
-  margin-left: 1rem;
 }
 
 .forms {
@@ -97,10 +97,11 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
 }
 
 .forms > form {
-  margin: 20px;
+  margin: 20px 20px 0 0;
   width: 100%;
 }
 
@@ -117,7 +118,6 @@ input[type="email"] {
   padding: 5px;
   margin-bottom: 10px;
   border-radius: 0.5rem;
-  border-width: 1px;
 }
 
 input:focus {
@@ -160,25 +160,21 @@ input:valid {
   background-color: #e73a2e;
   font-size: 1rem;
 }
+.table-container {
+  overflow: auto;
+  margin-bottom: 35px;
+}
 
 table {
-  margin-left: 1.2rem;
   width: 100%;
   margin-top: 3rem;
-}
-
-table,
-td,
-th {
-  border: 1px solid black;
   border-collapse: collapse;
-  align-items: center;
-  text-align: center;
+
 }
 
-td,
-th {
-  padding: 11px 21px;
+th, td {
+  padding: 15px 10px ;
+  text-align: center;
 }
 
 th {
@@ -190,31 +186,33 @@ table tr:nth-child(odd) {
   background-color: #daeeed;
 }
 
+
 .dados {
   background-color: blue;
   color: white;
   font-style: none;
-  padding: 3px;
-  border-radius: 5px;
+  padding: 8px;
+  border-radius: 18px;
   text-decoration: none;
+
 }
 
 .atualizar {
   background-color: #5ed368;
   color: white;
   font-style: none;
-  padding: 3px;
-  border-radius: 5px;
+  padding: 8px;
+  border-radius: 18px;
   text-decoration: none;
 }
 
 .remove {
-  background-color: #e73a2e;
+  background-color: #e72e2e;
   color: white;
   font-style: none;
   text-decoration: none;
-  padding: 3px;
-  border-radius: 5px;
+  padding: 8px;
+  border-radius: 18px;
 }
 
 .visualizar {
@@ -223,7 +221,6 @@ table tr:nth-child(odd) {
   background-color: #e3f5fc;
   padding: 20px;
   width: 100%;
-  margin-left: 1rem;
   margin-top: 3rem;
   margin-bottom: 1rem;
   -webkit-box-shadow: 4px -1px 17px 4px rgba(0, 0, 0, 0.75);
@@ -237,7 +234,7 @@ table tr:nth-child(odd) {
   line-height: 35px;
 }
 
-.visualizar-item strong {
+.visualizar-item h3 {
   color: #044549;
   font-size: 21px;
   margin-bottom: 10px;
@@ -245,8 +242,7 @@ table tr:nth-child(odd) {
 }
 
 .visualizar-item > p {
-  margin-left: 11px;
-  font-size: 30px;
+  font-size: 15px;
   font-weight: 400;
 }
 
@@ -267,11 +263,11 @@ table tr:nth-child(odd) {
 }
 
 #btnApagar {
-  background-color: #e73a2e;
+  background-color: #5ed368;
 }
 
 #voltar {
-  background-color: #5ed368;
+  background-color: #e73a2e;
 }
 
 #voltar a {
@@ -279,17 +275,14 @@ table tr:nth-child(odd) {
   color: white;
 }
 
-#btnApagar:hover {
-  width: 450px;
-  height: 211px;
-  filter: brightness(1.1);
-}
-
+#btnApagar:hover,
 #voltar:hover {
   width: 450px;
   height: 211px;
   filter: brightness(1.1);
+  transition: width 0.7s, height 0.7s, filter 0.7s;
 }
+
 
 .barra-pesquisar {
   display: flex;
@@ -312,3 +305,75 @@ table tr:nth-child(odd) {
   color: white;
   font-size: 21px;
 }
+
+
+
+@media (max-width: 768px) {
+
+  .nav.bar{
+    height: 10rem;
+  }
+.menu {
+  margin: 0;
+  padding: 0;
+  margin-right: 15px;
+}
+
+
+.menu > li {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.menu > li > a {
+ 
+  font-size: 18px !important;
+}
+.title{
+  text-align: center;
+}
+
+.logo > img {
+  width: 100px;
+  margin-left: 5px;
+}
+
+  header.container {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: -20%;
+    height: 90vh;
+  }
+  
+  .forms{
+    margin:0;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .tfooter{
+    height: 15rem;
+  }
+  .table-container{
+    margin-bottom: 90px;
+  }
+  th{
+    padding: 8px;
+  }
+  td {
+     padding: 2px 7px;
+  }
+  .visualizar{
+    overflow: auto; 
+    margin-bottom: 100px;
+  }
+  .visualizar-item {
+    flex-direction: column;
+    justify-content: center;
+  }
+ 
+  .rodape h2{
+    margin-top: 65px;
+  }
+
+}
+

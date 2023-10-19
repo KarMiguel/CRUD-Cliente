@@ -7,7 +7,8 @@
 		
 		$sql = "SELECT * FROM pessoa WHERE id = " . $id;
 		
-		$resultado = mysqli_query($conexao, $sql);
+        $resultado = mysqli_query($conexao, $sql);
+
 		
 		$editar = mysqli_fetch_assoc($resultado);
 	}
@@ -39,6 +40,8 @@
     </nav>
 
     <header class="container">
+    <div class="container-mensagens" id="container-mensagens"></div>
+
          <div class="title">
             <h1>Atualizar dados</h1>
         </div>
@@ -57,14 +60,17 @@
                 <input value="<?php echo $editar['data_nascimento']; ?>"
                     type="date" 
                     id="dtNasc" 
-                    name="dtNasc" ><br>
+                    name="dtNasc" 
+                    min="0001-01-01"
+                    max="9999-12-31"><br>
 
                 <label for="tel">Telefone: </label>
                 <input value="<?php echo $editar['telefone']; ?>"
                     type="text"
                      id="telefone"
                      name="telefone" 
-                     maxlength="15"><br>
+                     maxlength="15"
+                     oninput="aplicarMascara(this)"><br>
                      
                 <label for="genero">Gênero:</label>
 
@@ -112,7 +118,6 @@
 	if(isset($_POST['botaoEnviar']))
 	{
         include('../config/conexao.php');
-		
         $nome = $_POST['nome'];
         $dtNasc = $_POST['dtNasc'];
         $telefone = $_POST['telefone'];
@@ -122,10 +127,10 @@
 		
         $sql = "UPDATE pessoa SET nome = '{$nome}', data_nascimento = '{$dtNasc}', telefone = '{$telefone}',
          genero = '{$genero}', email = '{$email}', profissao = '{$profissao}' WHERE id = {$id}";		
+        $resultado = mysqli_query($conexao, $sql);
 
 
 		if ($resultado) {
-            echo '<script>alert("Cadastro atualizado com sucesso!");</script>';
             echo '<script>window.location.href = "listar.php";</script>';
         } else {
             echo '<script>alert("Erro: " + mysqli_error($conexao));</script>';
