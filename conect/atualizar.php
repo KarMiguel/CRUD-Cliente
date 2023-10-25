@@ -129,8 +129,14 @@
          genero = '{$genero}', email = '{$email}', profissao = '{$profissao}' WHERE id = {$id}";		
         $resultado = mysqli_query($conexao, $sql);
 
+	$resultado = mysqli_query($conexao, $sql);
 
+<<<<<<< HEAD
 		if ($resultado) {
+=======
+	if ($resultado) {
+            echo '<script>alert("Cadastro atualizado com sucesso!");</script>';
+>>>>>>> 2a852a1bcbfd7254c75474f91944903636d218d3
             echo '<script>window.location.href = "listar.php";</script>';
         } else {
             echo '<script>alert("Erro: " + mysqli_error($conexao));</script>';
