@@ -1,4 +1,14 @@
 <?php  
+session_start();
+
+if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)){
+  unset($_SESSION['email']);
+  unset($_SESSION['senha']);
+  header('Location:../index.php');
+  $logado = $_SESSION['email'];
+
+}else{ 
+
 	if(isset($_GET['id']))
 	{
 		$id = $_GET['id'];
@@ -12,6 +22,7 @@
 		
 		$editar = mysqli_fetch_assoc($resultado);
 	}
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -26,6 +37,7 @@
         href="../img/logo-menu.png"
         type="image/vnd.microsoft.icon"
   />
+  <script src="../js/form.js" defer></script>
 </head>
 <body>
     <nav class="nav-bar">
@@ -33,9 +45,10 @@
             <img src="../img/logo-menu.png" alt="">
         </div>
         <ul class="menu">
-             <li ><a href="index.php">Cadastrar</a></li>
+             <li ><a href="cadastrarPessoas.php">Cadastrar</a></li>
             <li ><a href="listar.php">Lista</a></li>
             <li ><a href="pesquisar.php">Pesquisar</a></li>
+            <li id="sair"><a  href="sair.php">Sair</a></li>
         </ul>
     </nav>
 
@@ -129,14 +142,8 @@
          genero = '{$genero}', email = '{$email}', profissao = '{$profissao}' WHERE id = {$id}";		
         $resultado = mysqli_query($conexao, $sql);
 
-	$resultado = mysqli_query($conexao, $sql);
 
-<<<<<<< HEAD
 		if ($resultado) {
-=======
-	if ($resultado) {
-            echo '<script>alert("Cadastro atualizado com sucesso!");</script>';
->>>>>>> 2a852a1bcbfd7254c75474f91944903636d218d3
             echo '<script>window.location.href = "listar.php";</script>';
         } else {
             echo '<script>alert("Erro: " + mysqli_error($conexao));</script>';

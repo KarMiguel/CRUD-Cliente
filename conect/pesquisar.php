@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="../css/style.css">
   <title>Pesquisar Clientes</title>
   <link rel="shortcut icon" href="../img/logo-menu.png" type="image/vnd.microsoft.icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 <body>
   <nav class="nav-bar">
@@ -13,9 +15,11 @@
       <img src="../img/logo-menu.png" alt="">
     </div>
     <ul class="menu">
-        <li ><a href="index.php">Cadastrar</a></li>
+    <li ><a href="cadastrarPessoas.php">Cadastrar</a></li>
         <li ><a href="listar.php">Lista </a></li>
         <li ><a href="pesquisar.php">Pesquisar</a></li>
+        <li id="sair"><a  href="sair.php">Sair</a></li>
+
     </ul>
   </nav>
 
@@ -27,16 +31,25 @@
     <div class="forms">
         <form method="POST" action="">
             <div class="barra-pesquisar">
-            <input id="pesquisar"
-                type="text" name="nomePesquisar" placeholder="Digite o nome do cliente que deseja pesquisar...">
-                <button id="pesquisar" name="pesquisar" type="submit">Pesquisar</button>
+            <input id="pesquisar" type="text" name="nomePesquisar" placeholder="Digite o nome do cliente que deseja pesquisar...">
+            <button id="pesquisar" name="pesquisar" type="submit">Pesquisar</button>
             </div>
-            </form>
+        </form>
     </div>
 
     <?php
+
+include('../config/conexao.php');
+
+session_start();
+if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)){
+  unset($_SESSION['email']);
+  unset($_SESSION['senha']);
+  header('Location:../index.php');
+}
+$logado = $_SESSION['email'];
+
     if (isset($_POST['pesquisar'])) {
-        include('../config/conexao.php');
         $nome = $_POST["nomePesquisar"];
 
         $sql = "SELECT * FROM pessoa WHERE nome = '$nome'";
@@ -50,6 +63,7 @@
                 echo "<th>ID</th>";
                 echo "<th>Nome</th>";
                 echo "<th>E-mail</th>";
+                echo "<th>Telefone</th>";
                 echo "<th>Visualizar</th>";
                 echo "<th>Atualizar</th>";
                 echo "<th>Remover</th>";
@@ -61,9 +75,11 @@
                     echo "<td>" . $values['id'] . "</td>";
                     echo "<td>" . $values['nome'] . "</td>";
                     echo "<td>" . $values['email'] . "</td>";
-                    echo "<td><a class='dados' href='Visualizar.php?id={$id}'>Visualizar</a></td>";
-                    echo "<td><a class='atualizar' href='atualizar.php?id={$id}'>Atualizar</a></td>";
-                    echo "<td><a class='remove' href='remover.php?id={$id}'>Remover</a></td>";
+                    echo "<td>" . $values['telefone'] . "</td>";
+                    echo "<td><a class='dados' href='visualizar.php?id={$id}'><i class='fas fa-eye'></i></a></td>";
+                    echo "<td><a class='atualizar' href='atualizar.php?id={$id}'><i class='fas fa-edit'></i></a></td>";
+                    echo '<td><a class="remove" href="javascript:void(0)" onclick="confirmarApagar(' . $id . ')"><i class="fa-solid fa-trash"></i></a></td>';
+                    
                     echo "</tr>";
                 }
                 echo "</table>";
@@ -74,6 +90,7 @@
             echo " Cliente nao encontrado!";
         }
     }
+
     ?>
 
   </header>

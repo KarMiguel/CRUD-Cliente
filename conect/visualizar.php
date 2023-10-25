@@ -1,4 +1,14 @@
 <?php
+
+session_start();
+
+if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)){
+  unset($_SESSION['email']);
+  unset($_SESSION['senha']);
+  header('Location:../index.php');
+  $logado = $_SESSION['email'];
+
+}else{ 
   require_once('../config/conexao.php');
 
   $id = isset($_GET['id']) ? $_GET['id'] : null;
@@ -9,6 +19,7 @@
     $resultado = mysqli_query($conexao, $sql);
     $editar = mysqli_fetch_assoc($resultado);
   }
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,9 +37,10 @@
       <img src="../img/logo-menu.png" alt="">
     </div>
     <ul class="menu">
-            <li ><a href="index.php">Cadastrar</a></li>
+    <li ><a href="cadastrarPessoas.php">Cadastrar</a></li>
             <li ><a href="listar.php">Lista</a></li>
             <li ><a href="pesquisar.php">Pesquisar</a></li>
+            <li id="sair"><a  href="sair.php">Sair</a></li>
     </ul>
   </nav>
 

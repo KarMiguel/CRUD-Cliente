@@ -1,3 +1,53 @@
+<?php
+
+
+session_start();
+
+if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)){
+  unset($_SESSION['email']);
+  unset($_SESSION['senha']);
+  header('Location:../index.php');
+
+}
+$logado = $_SESSION['email'];
+
+
+
+$nome = "";
+$dtNasc = "";
+$telefone ="";
+$genero = "";
+$email ="";
+$profissao = "";
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    include('../config/conexao.php');
+    $nome = $_POST['nome'];
+    $dtNasc = $_POST['dtNasc'];
+    $telefone = $_POST['telefone'];
+    $genero = $_POST['genero'];
+    $email = $_POST['email'];
+    $profissao = $_POST['profissao'];
+
+
+
+    $sql = "INSERT INTO pessoa (nome, data_nascimento, telefone, genero, email, profissao) 
+            VALUES ('$nome', '$dtNasc', '$telefone', '$genero', '$email', '$profissao')";
+
+    $resultado = mysqli_query($conexao, $sql);
+
+    if ($resultado) {
+        header('Location:./listar.php');
+    } else { 
+        echo "Erro: " . mysqli_error($conexao);
+    }
+
+}
+?>
+
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -12,6 +62,7 @@
         href="../img/logo-menu.png"
         type="image/vnd.microsoft.icon"
   />
+  <script src="../js/form.js" defer></script>
 
 </head>
 <body>
@@ -20,9 +71,10 @@
             <img src="../img/logo-menu.png" alt="">
         </div>
         <ul class="menu">
-            <li ><a href="index.php">Cadastrar</a></li>
+        <li ><a href="cadastrarPessoas.php">Cadastrar</a></li>
             <li ><a href="listar.php">Lista </a></li>
             <li ><a href="pesquisar.php">Pesquisar</a></li>
+            <li id="sair"><a  href="sair.php">Sair</a></li>
         </ul>
     </nav>
 
@@ -32,7 +84,7 @@
         </div>
         <div class="forms">
           
-            <form  action="./cadastrar.php" method="POST"  >
+            <form id="form" action="" method="POST">
 
                 <label for="nome">Nome: </label>
                 <input type="text" id="nome" name="nome" required maxlength="60" placeholder="Nome completo"><br>
@@ -51,19 +103,20 @@
                     <p class="genero">Feminino</p>
 
                     <input type="radio" name="genero" value="Outro"required>
-                    <p class="genero">Outro</p><br> <br> 
+                    <p class="genero">Outro</p><br>
 
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" required placeholder="exemplo@gmail.com" maxlength="50"><br>
-                
                <label for="profissao">Profissão:</label>
-               <input type="text" name="profissao"id="profissao" maxlength="30" required placeholder="Ex: Programador"><br><br>
+               <input type="text" name="profissao"id="profissao" maxlength="30" required placeholder="Ex: Programador"><br>
 
+               <label for="email">Email:</label>
+               <input type="email" name="email" id="email" required placeholder="exemplo@gmail.com" maxlength="50"><br>
+               
                 <div class="botao">
                     <button id="botaoEnviar" name="btnCadastrar" id="btnCadastrar" type="submit">Enviar</button>
                     <button id="reset" name="reset" type="reset">Limpar</button>
                 </div>
             </form>
+
         </div>
     </header>
     
@@ -73,7 +126,6 @@
             <span>TAGLINE HERE</span>
         </div>
     </footer>
-    <script src="../js/form.js" ></script>
 
 
    

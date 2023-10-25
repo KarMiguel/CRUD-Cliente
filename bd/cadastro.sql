@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17/07/2023 às 21:49
+-- Tempo de geração: 19/10/2023 às 04:57
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -42,10 +42,11 @@ CREATE TABLE `pessoa` (
 --
 
 INSERT INTO `pessoa` (`id`, `nome`, `data_nascimento`, `telefone`, `genero`, `email`, `profissao`) VALUES
-(2, 'Carlos Miguel dos Santos Alves', '1999-01-06', '(38) 99966-1117', 'Masculino', 'carlosmiguel.dsa12@gmail.com', 'programdor'),
+(2, 'Carlos Miguel dos Santos  ', '2003-10-06', '(38) 99999-9999', 'Masculino', 'carlosmiguel.dsa12@gmail.com', 'Programdor'),
 (3, 'Maria de Jesus Ribeiro', '1976-12-29', '(61) 99554-6588', 'Feminino', 'mariadejesus.santana.@hotmail.com', 'professora'),
-(4, 'Joao Mainart Alves Cordeiro', '1988-02-01', '(38) 91754-6585', 'Outro', 'jmg@gmail.com', 'Artista'),
-(5, 'Ana Luisa Silva', '1999-11-05', '(88) 8581-3698', 'Feminino', 'ana@gmail.com', 'administradora');
+(8, 'Eraldo Carlos Alves de Souza', '1976-06-03', '(88) 99934-1895', 'Masculino', 'eraldocas@gmail.com', 'Produtor Rural'),
+(11, 'Maria Luiza dos Santos ', '2006-08-06', '(38) 98545-9875', 'Feminino', 'maria@gmail.com', 'Telefonista'),
+(41, 'Zezim Almeida Silva', '1999-05-05', '845454656', 'Masculino', 'zezim@gmail.com', 'fsdfsd');
 
 --
 -- Índices para tabelas despejadas
@@ -65,7 +66,7 @@ ALTER TABLE `pessoa`
 -- AUTO_INCREMENT de tabela `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
